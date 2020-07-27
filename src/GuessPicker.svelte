@@ -14,12 +14,25 @@
     guess = []
     guess = initialGuess()
   }
+
+  $: submittable = guess.filter((s) => s == "").length == 0
 </script>
+
+<style>
+  div {
+    display: flex;
+  }
+
+  button {
+    display: inline-block;
+    vertical-align: middle;
+  }
+</style>
 
 <div>
   {#each guess as peg}
   <PegToggle bind:value="{peg}" />
   {/each}
 
-  <button on:click="{handleSubmit}">Submit</button>
+  <button on:click="{handleSubmit}" disabled="{!submittable}">Submit</button>
 </div>

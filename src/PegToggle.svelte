@@ -1,6 +1,5 @@
 <script>
   const colors = ["", "red", "orange", "yellow", "green", "blue", "purple"]
-  let selected = 0
 
   export let value = ""
   export let readonly = false
@@ -10,18 +9,20 @@
       return
     }
 
-    selected = (selected + 1) % colors.length
-    value = colors[selected]
+    const selected = colors.indexOf(value)
+    value = colors[(selected + 1) % colors.length]
   }
 </script>
 
 <style>
   div {
     display: inline-block;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background-color: transparent;
+    padding: 5px;
+    margin: 5px;
   }
 
   .cantoggle {

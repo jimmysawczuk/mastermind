@@ -10,9 +10,7 @@
 </script>
 
 {#each guesses as guess}
-<div>
-  <Guess {guess} />
-</div>
+<Guess {guess} />
 {/each}
 
 <GuessPicker on:guess="{handleGuess}" />
