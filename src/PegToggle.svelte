@@ -1,17 +1,17 @@
 <script>
-  const colors = ["", "red", "orange", "yellow", "green", "blue", "purple"];
-  let selected = 0;
+  const colors = ["", "red", "orange", "yellow", "green", "blue", "purple"]
+  let selected = 0
 
-  export let value = "";
-  export let readonly = false;
+  export let value = ""
+  export let readonly = false
 
   function togglePeg() {
     if (readonly) {
-      return;
+      return
     }
 
-    selected = (selected + 1) % colors.length;
-    value = colors[selected];
+    selected = (selected + 1) % colors.length
+    value = colors[selected]
   }
 </script>
 
@@ -48,7 +48,4 @@
   }
 </style>
 
-<div
-  class={value}
-  class:cantoggle={!readonly}
-  on:click={togglePeg} />
+<div class="{value}" class:cantoggle="{!readonly}" on:click="{togglePeg}" />
