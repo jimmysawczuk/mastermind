@@ -1,22 +1,34 @@
 <script>
-export let clue
+  export let color
 </script>
 
 <style>
-div {
-	display: inline-block;
-	height: 10px;
-	width: 10px;
-	border-radius: 100%;
-}
+  div {
+    display: block;
+    height: 2px;
+    width: 2px;
+    border-radius: 50%;
+    background: silver;
+  }
 
-.black {
-	background: #000;
-}
+  .filled {
+    height: 10px;
+    width: 10px;
+    border-radius: 100%;
+  }
 
-.white {
-	background: #fff;
-}
+  .black {
+    background: #000;
+    border: 1px solid #000;
+  }
+
+  .white {
+    background: #fff;
+    border: 1px solid #000;
+  }
 </style>
 
-<div class={clue}></div>
+<div
+  class:peg={true}
+  class:filled={color == 'white' || color == 'black'}
+  class={color} />

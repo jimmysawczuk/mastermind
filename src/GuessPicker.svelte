@@ -1,5 +1,5 @@
 <script>
-  import PegToggle from "./PegToggle.svelte"
+  import Peg from "./Peg.svelte"
   import { createEventDispatcher } from "svelte"
 
   let dispatch = createEventDispatcher()
@@ -19,20 +19,57 @@
 </script>
 
 <style>
-  div {
-    display: flex;
+  .guess-picker {
+    display: grid;
+    grid-template-columns: 200px 40px;
+    grid-template-rows: 50px;
+    justify-items: center;
+    align-items: center;
+  }
+
+  .pegs {
+    display: grid;
+    grid-template-columns: 50px 50px 50px 50px;
+    grid-template-rows: 50px;
+    justify-items: center;
+    align-items: center;
   }
 
   button {
-    display: inline-block;
-    vertical-align: middle;
+    display: block;
+    width: 100%;
+    height: 40px;
+    background-color: var(--success-btn);
+    color: #fff;
+    border: var(--success-btn);
+    border-radius: 4px;
   }
 </style>
 
-<div>
-  {#each guess as peg}
-  <PegToggle bind:value="{peg}" />
-  {/each}
+<div class="guess-picker">
+  <div class="pegs">
+    {#each guess as peg}
+      <Peg bind:value={peg} />
+    {/each}
+  </div>
 
-  <button on:click="{handleSubmit}" disabled="{!submittable}">Submit</button>
+  <button on:click={handleSubmit} disabled={!submittable}>
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      data-prefix="far"
+      data-icon="check"
+      class="svg-inline--fa fa-check fa-w-16"
+      role="img"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512">
+      <path
+        fill="currentColor"
+        d="M435.848 83.466L172.804
+        346.51l-96.652-96.652c-4.686-4.686-12.284-4.686-16.971 0l-28.284
+        28.284c-4.686 4.686-4.686 12.284 0 16.971l133.421 133.421c4.686 4.686
+        12.284 4.686 16.971 0l299.813-299.813c4.686-4.686 4.686-12.284
+        0-16.971l-28.284-28.284c-4.686-4.686-12.284-4.686-16.97 0z" />
+    </svg>
+  </button>
 </div>

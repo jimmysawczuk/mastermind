@@ -1,5 +1,7 @@
 <script>
-  const colors = ["", "red", "orange", "yellow", "green", "blue", "purple"]
+  import { DEFAULT_COLORS } from "./utils"
+
+  const toggleColors = ["", ...DEFAULT_COLORS]
 
   export let value = ""
   export let readonly = false
@@ -9,8 +11,8 @@
       return
     }
 
-    const selected = colors.indexOf(value)
-    value = colors[(selected + 1) % colors.length]
+    const selected = toggleColors.indexOf(value)
+    value = toggleColors[(selected + 1) % toggleColors.length]
   }
 </script>
 
@@ -21,8 +23,6 @@
     height: 40px;
     border-radius: 50%;
     background-color: transparent;
-    padding: 5px;
-    margin: 5px;
   }
 
   .cantoggle {
@@ -49,4 +49,13 @@
   }
 </style>
 
-<div class="{value}" class:cantoggle="{!readonly}" on:click="{togglePeg}" />
+<div
+  class:peg={true}
+  class:cantoggle={!readonly}
+  class:red={value == 'red'}
+  class:orange={value == 'orange'}
+  class:yellow={value == 'yellow'}
+  class:green={value == 'green'}
+  class:blue={value == 'blue'}
+  class:purple={value == 'purple'}
+  on:click={togglePeg} />
