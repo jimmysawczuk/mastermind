@@ -2,15 +2,32 @@
   import GuessPicker from "./GuessPicker.svelte"
   import Guess from "./Guess.svelte"
 
-  let guesses = []
+  let history = []
+  let answer
+
+  function newGame() {
+    answer = ["orange", "orange", "orange", "orange"]
+  }
+
+  function getClue(guess, answer) {
+    let clue = ["","","",""]
+    return clue
+  }
 
   function handleGuess(evt) {
-    guesses = [evt.detail.guess, ...guesses]
+    const guess = evt.detail.guess
+
+    const clue = getClue(guess, answer)
+
+    history = [{
+      guess,
+      clue,
+    }, ...history]
   }
 </script>
 
-{#each guesses as guess}
-<Guess {guess} />
+{#each history as row}
+  <Guess guess={row.guess} clue={row.clue} />
 {/each}
 
-<GuessPicker on:guess="{handleGuess}" />
+<GuessPicker on:guess={handleGuess} />
