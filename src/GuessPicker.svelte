@@ -1,6 +1,7 @@
 <script>
   import Peg from "./Peg.svelte"
-  import { createEventDispatcher } from "svelte"
+  import { createEventDispatcher, onMount } from "svelte"
+  import { toggleColor } from "./utils.js"
 
   let dispatch = createEventDispatcher()
   let guess = initialGuess()
@@ -9,10 +10,44 @@
     return ["", "", "", ""]
   }
 
+  onMount(() => {
+    document.addEventListener("keyup", handleKeyUp)
+  })
+
   function handleSubmit() {
     dispatch("guess", { guess: guess })
-    guess = []
     guess = initialGuess()
+  }
+
+  function handleKeyUp(evt) {
+    switch (evt.key) {
+      case "1":
+        guess[0] = toggleColor(guess[0])
+        break
+
+      case "2":
+        guess[1] = toggleColor(guess[1])
+        break
+
+      case "3":
+        guess[2] = toggleColor(guess[2])
+        break
+
+      case "4":
+        guess[3] = toggleColor(guess[3])
+        break
+
+      case "Enter":
+        if (!submittable) {
+          break
+        }
+
+        handleSubmit()
+        break
+
+      default:
+        console.log(evt.key)
+    }
   }
 
   $: submittable = guess.filter((s) => s == "").length == 0
@@ -21,7 +56,7 @@
 <style>
   .guess-picker {
     display: grid;
-    grid-template-columns: 200px 40px;
+    grid-template-columns: 200px 50px;
     grid-template-rows: 50px;
     justify-items: center;
     align-items: center;
@@ -37,12 +72,17 @@
 
   button {
     display: block;
-    width: 100%;
+    width: 40px;
     height: 40px;
     background-color: var(--success-btn);
     color: #fff;
     border: var(--success-btn);
     border-radius: 4px;
+  }
+
+  button:disabled {
+    background-color: var(--peg-slot);
+    color: silver;
   }
 </style>
 

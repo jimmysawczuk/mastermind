@@ -85,3 +85,10 @@ export function isWin(clue) {
 
   return true
 }
+
+const toggleColors = ["", ...DEFAULT_COLORS]
+
+export function toggleColor(current) {
+  const selected = toggleColors.indexOf(current)
+  return toggleColors[(selected + 1) % toggleColors.length]
+}

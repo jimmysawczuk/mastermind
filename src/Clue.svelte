@@ -8,7 +8,7 @@
     height: 2px;
     width: 2px;
     border-radius: 50%;
-    background: silver;
+    background: var(--peg-slot);
   }
 
   .filled {
@@ -18,13 +18,13 @@
   }
 
   .black {
-    background: #000;
-    border: 1px solid #000;
+    background: var(--peg-black);
+    border: 1px solid var(--peg-black);
   }
 
   .white {
-    background: #fff;
-    border: 1px solid #000;
+    background: var(--peg-white);
+    border: 1px solid var(--peg-black);
   }
 </style>
 

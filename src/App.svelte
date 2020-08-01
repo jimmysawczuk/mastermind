@@ -52,6 +52,17 @@
   :global(:root) {
     --success-btn: #68d391;
     --new-game-btn: #63b3ed;
+
+    --peg-red: #c53030;
+    --peg-orange: #ed8936;
+    --peg-yellow: #f6e05e;
+    --peg-green: #48bb78;
+    --peg-blue: #3182ce;
+    --peg-purple: #6b46c1;
+
+    --peg-black: #1a202c;
+    --peg-white: #f7fafc;
+    --peg-slot: #e2e8f0;
   }
 
   :global(body) {

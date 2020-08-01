@@ -1,7 +1,5 @@
 <script>
-  import { DEFAULT_COLORS } from "./utils"
-
-  const toggleColors = ["", ...DEFAULT_COLORS]
+  import { toggleColor } from "./utils"
 
   export let value = ""
   export let readonly = false
@@ -11,18 +9,25 @@
       return
     }
 
-    const selected = toggleColors.indexOf(value)
-    value = toggleColors[(selected + 1) % toggleColors.length]
+    value = toggleColor(value)
   }
 </script>
 
 <style>
   div {
-    display: inline-block;
+    display: block;
+    width: 4px;
+    height: 4px;
+    padding: 20px;
+    border-radius: 50%;
+    background-color: var(--peg-slot);
+  }
+
+  .peg {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: transparent;
+    padding: 0;
   }
 
   .cantoggle {
@@ -30,27 +35,32 @@
   }
 
   .red {
-    background-color: #ff0000;
+    background-color: var(--peg-red);
   }
+
   .orange {
-    background-color: #ffa500;
+    background-color: var(--peg-orange);
   }
+
   .yellow {
-    background-color: #ffff00;
+    background-color: var(--peg-yellow);
   }
+
   .green {
-    background-color: #008800;
+    background-color: var(--peg-green);
   }
+
   .blue {
-    background-color: #0000ff;
+    background-color: var(--peg-blue);
   }
+
   .purple {
-    background-color: #4b0082;
+    background-color: var(--peg-purple);
   }
 </style>
 
 <div
-  class:peg={true}
+  class:peg={value != ''}
   class:cantoggle={!readonly}
   class:red={value == 'red'}
   class:orange={value == 'orange'}

@@ -12,7 +12,7 @@
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: silver;
+    background: var(--peg-slot);
   }
 </style>
 
