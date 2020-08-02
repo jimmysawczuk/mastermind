@@ -10,6 +10,7 @@ module.exports = {
   },
   resolve: {
     alias: {
+      "~": path.resolve("node_modules"),
       svelte: path.resolve("node_modules", "svelte"),
     },
     extensions: [".mjs", ".js", ".svelte"],

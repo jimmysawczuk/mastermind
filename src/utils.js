@@ -14,9 +14,9 @@ export function getClue(guess, answer) {
   let answerUsed = Array(4).fill(false)
   let guessUsed = Array(4).fill(false)
 
-  console.log("New guess")
-  console.log("Guess", guess)
-  console.log("Answer", answer)
+  // console.log("New guess")
+  // console.log("Guess", guess)
+  // console.log("Answer", answer)
 
   for (let i = 0; i < guess.length; i++) {
     if (answerUsed[i] || guessUsed[i]) {
@@ -29,8 +29,8 @@ export function getClue(guess, answer) {
     }
   }
 
-  console.log("- Black", black)
-  console.log("- Used", guessUsed, answerUsed)
+  // console.log("- Black", black)
+  // console.log("- Used", guessUsed, answerUsed)
 
   for (let i = 0; i < guess.length; i++) {
     for (let j = 0; j < answer.length; j++) {
@@ -64,12 +64,24 @@ export function getClue(guess, answer) {
 }
 
 export function getNewAnswer(repeat = true) {
-  let resp = []
-  for (let i = 0; i < 4; i++) {
-    const r = Math.floor(Math.random() * DEFAULT_COLORS.length)
-    resp[i] = DEFAULT_COLORS[r]
+  while (true) {
+    let resp = []
+    for (let i = 0; i < 4; i++) {
+      const r = Math.floor(Math.random() * DEFAULT_COLORS.length)
+      resp[i] = DEFAULT_COLORS[r]
+    }
+
+    if (!repeat) {
+      const s = new Set(resp)
+      // console.log(s, resp, s.size)
+      if (s.size < 4) {
+        continue
+      }
+    }
+
+    // console.log("final", resp)
+    return resp
   }
-  return resp
 }
 
 export function isWin(clue) {

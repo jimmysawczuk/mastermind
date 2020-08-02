@@ -15,19 +15,13 @@
   })
 
   function handleNewGame() {
-    answer = getNewAnswer()
+    answer = getNewAnswer(false)
     history = []
   }
 
   function handleGuess(evt) {
     const guess = evt.detail.guess
     const clue = getClue(guess, answer)
-
-    if (isWin(clue)) {
-      alert("You won!")
-      handleNewGame()
-      return
-    }
 
     history = [
       {
@@ -36,6 +30,11 @@
       },
       ...history,
     ]
+
+    if (isWin(clue)) {
+      alert("You won!")
+      handleNewGame()
+    }
   }
 </script>
 
@@ -90,6 +89,7 @@
   }
 
   .new-game-btn {
+    cursor: pointer;
     background: var(--new-game-btn);
     border: 1px solid var(--new-game-btn);
     border-radius: 4px;

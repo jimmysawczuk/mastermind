@@ -4,7 +4,7 @@
   export let guess = ["", "", "", ""]
   export let clue = []
 
-  console.log(guess, clue)
+  // console.log(guess, clue)
 </script>
 
 <style>
