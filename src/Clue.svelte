@@ -2,13 +2,15 @@
   export let color
 </script>
 
-<style>
+<style lang="scss">
+  @use "_scss/variables" as *;
+
   div {
     display: block;
     height: 2px;
     width: 2px;
     border-radius: 50%;
-    background: var(--peg-slot);
+    background: $peg-slot;
   }
 
   .filled {
@@ -18,13 +20,13 @@
   }
 
   .black {
-    background: var(--peg-black);
-    border: 1px solid var(--peg-black);
+    background: $peg-black;
+    border: 1px solid $peg-black;
   }
 
   .white {
-    background: var(--peg-white);
-    border: 1px solid var(--peg-black);
+    background: $peg-white;
+    border: 1px solid $peg-black;
   }
 </style>
 

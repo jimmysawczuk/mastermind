@@ -57,52 +57,80 @@
   $: submittable = guess.filter((s) => s == "").length == 0
 </script>
 
-<style>
+<style lang="scss">
+  @use "_scss/variables" as *;
+
   .guess-picker {
     display: grid;
-    grid-template-columns: 250px;
-    grid-template-rows: 50px 40px;
+    grid-template-columns: 5 * 3rem;
+    grid-template-rows: 3rem 3rem;
     justify-items: center;
     align-items: center;
+
+    @media (max-width: $screen-sm-max) {
+      grid-template-columns: 5 * 2.5rem;
+      grid-template-rows: 2.5rem 2.5rem;
+    }
   }
 
   .ops {
     display: grid;
-    grid-template-columns: 200px 50px;
-    grid-template-rows: 50px;
+    grid-template-columns: 4 * 3rem 3rem;
+    grid-template-rows: 3rem;
     justify-items: center;
     align-items: center;
+
+    @media (max-width: $screen-sm-max) {
+      grid-template-columns: 4 * 2.5rem 2.5rem;
+      grid-template-rows: 2.5rem;
+    }
   }
 
   .pegs {
     display: grid;
-    grid-template-columns: repeat(4, 50px);
-    grid-template-rows: 50px;
+    grid-template-columns: repeat(4, 3rem);
+    grid-template-rows: 3rem;
     justify-items: center;
     align-items: center;
+
+    @media (max-width: $screen-sm-max) {
+      grid-template-columns: repeat(4, 2.5rem);
+      grid-template-rows: 2.5rem;
+    }
   }
 
   button {
     display: block;
     width: 40px;
     height: 40px;
-    background-color: var(--success-btn);
+    background-color: $success-btn;
     color: #fff;
-    border: var(--success-btn);
+    border: 1px solid $success-btn;
     border-radius: 4px;
+
+    @media (max-width: $screen-sm-max) {
+      width: 34px;
+      height: 34px;
+    }
   }
 
   button:disabled {
-    background-color: var(--peg-slot);
+    background-color: $peg-slot;
+    border: 1px solid $peg-slot;
     color: silver;
   }
 
   .shortcuts {
     display: grid;
-    grid-template-columns: repeat(5, 50px);
-    grid-template-rows: 40px;
+    grid-template-columns: repeat(4, 3rem) 3rem;
+    grid-template-rows: 3rem;
     justify-items: center;
     align-items: center;
+
+    @media (max-width: $screen-sm-max) {
+      grid-template-columns: repeat(4, 2.5rem) 2.5rem;
+      grid-template-rows: 2.5rem;
+    }
   }
 
   .shortcuts .key {
@@ -115,8 +143,12 @@
     color: #777;
     font-size: 0.9rem;
     font-family: monospace;
-    width: 30px;
-    height: 30px;
+    width: 2rem;
+    height: 2rem;
+
+    @media (max-width: $screen-sm-max) {
+      display: none;
+    }
   }
 </style>
 

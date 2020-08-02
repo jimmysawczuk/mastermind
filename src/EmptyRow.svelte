@@ -1,10 +1,17 @@
-<style>
+<style lang="scss">
+  @use "_scss/variables" as *;
+
   .empty-row {
     display: grid;
-    grid-template-columns: 50px 50px 50px 50px 40px;
-    grid-template-rows: 50px;
+    grid-template-columns: repeat(5, 3rem);
+    grid-template-rows: 3rem;
     justify-items: center;
     align-items: center;
+
+    @media (max-width: $screen-sm-max) {
+      grid-template-columns: repeat(5, 2.5rem);
+      grid-template-rows: 2.5rem;
+    }
   }
 
   .slot {
@@ -12,7 +19,7 @@
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: var(--peg-slot);
+    background: $peg-slot;
   }
 </style>
 

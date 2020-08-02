@@ -13,21 +13,21 @@
   }
 </script>
 
-<style>
+<style lang="scss">
+  @use "_scss/variables" as *;
+
   div {
     display: block;
-    width: 4px;
-    height: 4px;
-    padding: 20px;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
-    background-color: var(--peg-slot);
-  }
-
-  .peg {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    background-color: $peg-slot;
     padding: 0;
+
+    @media (max-width: $screen-sm-max) {
+      width: 2rem;
+      height: 2rem;
+    }
   }
 
   .cantoggle {
@@ -35,27 +35,27 @@
   }
 
   .red {
-    background-color: var(--peg-red);
+    background-color: $peg-red;
   }
 
   .orange {
-    background-color: var(--peg-orange);
+    background-color: $peg-orange;
   }
 
   .yellow {
-    background-color: var(--peg-yellow);
+    background-color: $peg-yellow;
   }
 
   .green {
-    background-color: var(--peg-green);
+    background-color: $peg-green;
   }
 
   .blue {
-    background-color: var(--peg-blue);
+    background-color: $peg-blue;
   }
 
   .purple {
-    background-color: var(--peg-purple);
+    background-color: $peg-purple;
   }
 </style>
 
