@@ -35,6 +35,11 @@
       alert("You won!")
       handleNewGame()
     }
+
+    if (history.length >= 10) {
+      alert("You lose! The answer was: " + answer.join(", "))
+      handleNewGame()
+    }
   }
 </script>
 
