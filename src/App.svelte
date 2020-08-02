@@ -48,6 +48,7 @@
 
   :global(html) {
     box-sizing: border-box;
+    font-size: 16px;
   }
   :global(*, *:before, *:after) {
     box-sizing: inherit;

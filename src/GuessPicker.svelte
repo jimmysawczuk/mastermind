@@ -106,12 +106,17 @@
   }
 
   .shortcuts .key {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+
     border: 1px solid #555;
     border-radius: 3px;
     color: #777;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-family: monospace;
-    padding: 0.25rem;
+    width: 30px;
+    height: 30px;
   }
 </style>
 
