@@ -46,21 +46,11 @@ export function getClue(guess, answer) {
     }
   }
 
-  let resp = Array(4)
-
-  for (let i = 0; i < black; i++) {
-    resp[i] = "black"
-  }
-
-  for (let i = black; i < black + white; i++) {
-    resp[i] = "white"
-  }
-
-  for (let i = black + white; i < resp.length; i++) {
-    resp[i] = ""
-  }
-
-  return resp
+  return [
+    ...Array(black).fill("black"),
+    ...Array(white).fill("white"),
+    ...Array(4 - black - white).fill(""),
+  ]
 }
 
 export function getNewAnswer(repeat = true) {
