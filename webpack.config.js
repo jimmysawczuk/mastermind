@@ -1,6 +1,9 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const path = require("path")
+
 const sveltePreprocess = require("svelte-preprocess")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const TerserJSPlugin = require("terser-webpack-plugin")
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 
 const mode = process.env.NODE_ENV || "development"
 const prod = mode === "production"
@@ -30,7 +33,7 @@ module.exports = {
         use: {
           loader: "svelte-loader",
           options: {
-            emitCss: false,
+            emitCss: true,
             hotReload: true,
             preprocess: sveltePreprocess(),
           },
@@ -39,12 +42,9 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          /**
-           * MiniCssExtractPlugin doesn't support HMR.
-           * For developing, use 'style-loader' instead.
-           * */
           prod ? MiniCssExtractPlugin.loader : "style-loader",
           "css-loader",
+          "postcss-loader",
         ],
       },
     ],
@@ -55,5 +55,8 @@ module.exports = {
       filename: "[name].css",
     }),
   ],
+  optimization: {
+    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+  },
   devtool: prod ? false : "source-map",
 }

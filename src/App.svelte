@@ -55,22 +55,6 @@
     box-sizing: inherit;
   }
 
-  // :global(:root) {
-  //   --success-btn: $success-btn;
-  //   --new-game-btn: #63b3ed;
-
-  //   --peg-red: #c53030;
-  //   --peg-orange: #ed8936;
-  //   --peg-yellow: #f6e05e;
-  //   --peg-green: #48bb78;
-  //   --peg-blue: #3182ce;
-  //   --peg-purple: $peg-purple;
-
-  //   --peg-black: #1a202c;
-  //   --peg-white: #f7fafc;
-  //   --peg-slot: #e2e8f0;
-  // }
-
   :global(body) {
     display: grid;
     justify-items: center;
