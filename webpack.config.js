@@ -3,7 +3,7 @@ const path = require("path")
 const sveltePreprocess = require("svelte-preprocess")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const TerserJSPlugin = require("terser-webpack-plugin")
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
+const CSSMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin")
 
 const mode = process.env.NODE_ENV || "development"
 const prod = mode === "production"
@@ -24,6 +24,7 @@ module.exports = {
     path: __dirname + "/public",
     filename: "[name].js",
     chunkFilename: "[name].[id].js",
+    publicPath: "",
   },
   module: {
     rules: [
@@ -56,7 +57,7 @@ module.exports = {
     }),
   ],
   optimization: {
-    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    minimizer: [new TerserJSPlugin({}), new CSSMinimizerWebpackPlugin()],
   },
   devtool: prod ? false : "source-map",
 }
