@@ -54,9 +54,7 @@ module.exports = {
     historyApiFallback: {
       index: "index.html",
     },
-    contentBase: path.join(__dirname, "public"),
     hot: true,
-    overlay: true,
   },
   mode,
   plugins: [
