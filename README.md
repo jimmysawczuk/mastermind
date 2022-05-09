@@ -2,4 +2,6 @@
 
 > A simple Mastermind implementation written in [Svelte](https://svelte.dev). [Play it here.](https://mastermind.jimmysawczuk.com)
 
+<div style="max-width: 400px">
 ![Screenshot](/github.png)
+</div>
