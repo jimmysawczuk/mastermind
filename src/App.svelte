@@ -45,10 +45,12 @@
 
 <div class="pt-16">
   <div
-    class="fixed w-full px-6 h-16 left-0 top-0 right-0 grid grid-cols-[1fr,2fr,1fr] items-center"
+    class="fixed w-full px-6 h-16 left-0 top-0 right-0 grid grid-cols-[2fr,1fr] sm:grid-cols-[1fr,2fr,1fr] items-center"
   >
-    <div />
-    <h1 class="text-center text-xl font-bold text-slate-800 dark:text-slate-50">
+    <div class="hidden sm:block" />
+    <h1
+      class="text-left sm:text-center text-xl font-bold text-slate-800 dark:text-slate-50 transition-colors"
+    >
       Mastermind
     </h1>
     <div>
