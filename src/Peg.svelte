@@ -13,59 +13,16 @@
   }
 </script>
 
-<style lang="scss">
-  @use "_scss/variables" as *;
-
-  div {
-    display: block;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    background-color: $peg-slot;
-    padding: 0;
-
-    @media (max-width: $screen-sm-max) {
-      width: 2rem;
-      height: 2rem;
-    }
-  }
-
-  .cantoggle {
-    cursor: pointer;
-  }
-
-  .red {
-    background-color: $peg-red;
-  }
-
-  .orange {
-    background-color: $peg-orange;
-  }
-
-  .yellow {
-    background-color: $peg-yellow;
-  }
-
-  .green {
-    background-color: $peg-green;
-  }
-
-  .blue {
-    background-color: $peg-blue;
-  }
-
-  .purple {
-    background-color: $peg-purple;
-  }
-</style>
-
 <div
-  class:peg={value != ''}
-  class:cantoggle={!readonly}
-  class:red={value == 'red'}
-  class:orange={value == 'orange'}
-  class:yellow={value == 'yellow'}
-  class:green={value == 'green'}
-  class:blue={value == 'blue'}
-  class:purple={value == 'purple'}
-  on:click={togglePeg} />
+  class="block w-7 h-7 rounded-full p-0 transition-colors shadow-md"
+  class:cursor-pointer={!readonly}
+  class:bg-slate-300={value == ""}
+  class:dark:bg-slate-600={value == ""}
+  class:bg-red-500={value == "red"}
+  class:bg-orange-500={value == "orange"}
+  class:bg-yellow-300={value == "yellow"}
+  class:bg-green-500={value == "green"}
+  class:bg-blue-500={value == "blue"}
+  class:bg-violet-600={value == "purple"}
+  on:click={togglePeg}
+/>

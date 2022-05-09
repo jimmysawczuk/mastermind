@@ -43,62 +43,31 @@
   }
 </script>
 
-<style lang="scss">
-  @use "_scss/variables" as *;
-
-  :global(html) {
-    box-sizing: border-box;
-    font-size: 16px;
-  }
-
-  :global(*, *:before, *:after) {
-    box-sizing: inherit;
-  }
-
-  :global(body) {
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
-  }
-
-  .board {
-    position: relative;
-  }
-
-  .controls {
-    position: absolute;
-    right: 100%;
-  }
-
-  .new-game-btn {
-    cursor: pointer;
-    display: inline-block;
-    background: $new-game-btn;
-    border: 1px solid $new-game-btn;
-    border-radius: 4px;
-    padding: 5px 15px;
-    color: #fff;
-    width: 100%;
-  }
-</style>
-
-<div class="board">
-  <div class="controls">
-    <button class="new-game-btn" on:click={handleNewGame}>New Game</button>
+<div class="pt-16">
+  <div
+    class="fixed w-full px-6 h-16 left-0 top-0 right-0 grid grid-cols-[1fr,2fr,1fr] items-center"
+  >
+    <div />
+    <h1 class="text-center text-xl font-bold text-slate-800 dark:text-slate-50">
+      Mastermind
+    </h1>
+    <div>
+      <button
+        class="inline-block text-sm border border-slate-700 dark:border-slate-200 text-slate-700 dark:text-slate-200 rounded-md px-4 py-2 shadow-lg hover:text-slate-800 hover:border-slate-800 dark:hover:border-slate-50 dark:hover:text-slate-50 transition-colors"
+        on:click={handleNewGame}>New Game</button
+      >
+    </div>
   </div>
 
-  {#each Array(10 - history.length) as name}
-    <EmptyRow />
-  {/each}
+  <div class="grid grid-cols-5 auto-rows-[1fr] gap-1 place-items-center">
+    {#each Array(10 - history.length) as name}
+      <EmptyRow />
+    {/each}
 
-  {#each history as row}
-    <Guess guess={row.guess} clue={row.clue} />
-  {/each}
+    {#each history as row}
+      <Guess guess={row.guess} clue={row.clue} />
+    {/each}
 
-  <GuessPicker on:guess={handleGuess} />
+    <GuessPicker on:guess={handleGuess} />
+  </div>
 </div>

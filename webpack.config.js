@@ -1,6 +1,5 @@
 const path = require("path")
 
-const sveltePreprocess = require("svelte-preprocess")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const TerserJSPlugin = require("terser-webpack-plugin")
 const CSSMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin")
@@ -36,7 +35,6 @@ module.exports = {
           options: {
             emitCss: true,
             hotReload: !prod,
-            preprocess: sveltePreprocess(),
           },
         },
       },
