@@ -3,6 +3,7 @@
 
   export let value = ""
   export let readonly = false
+  export let lg = false
 
   function togglePeg() {
     if (readonly) {
@@ -14,7 +15,11 @@
 </script>
 
 <div
-  class="block w-7 h-7 rounded-full p-0 transition-colors shadow-md"
+  class="block rounded-full p-0 transition-colors shadow-md"
+  class:w-6={!lg}
+  class:h-6={!lg}
+  class:w-10={lg}
+  class:h-10={lg}
   class:cursor-pointer={!readonly}
   class:bg-slate-300={value == ""}
   class:dark:bg-slate-600={value == ""}

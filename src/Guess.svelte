@@ -1,9 +1,12 @@
 <script>
   import Peg from "./Peg.svelte"
   import Clue from "./Clue.svelte"
-  export let guess = ["red", "orange", "blue", "green"]
+  export let guess = []
   export let clue = []
+  export let num = 0
 </script>
+
+<div class="font-mono text-center text-slate-500">#{num}</div>
 
 {#each guess as peg}
   <Peg value={peg} readonly />

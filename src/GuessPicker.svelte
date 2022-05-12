@@ -58,8 +58,8 @@
 </script>
 
 {#each guess as peg}
-  <div class="pt-2">
-    <Peg bind:value={peg} />
+  <div>
+    <Peg bind:value={peg} lg />
   </div>
 {/each}
 
@@ -92,27 +92,27 @@
 </div>
 
 <div
-  class="grid place-items-center border border-slate-300 rounded text-sm font-mono w-6 h-6"
+  class="grid place-items-center border border-slate-300 dark:border-slate-600 text-slate-400 dark:text-slate-500 transition-colors rounded text-sm font-mono w-6 h-6 select-none"
 >
   1
 </div>
 <div
-  class="grid place-items-center border border-slate-300 rounded text-sm font-mono w-6 h-6"
+  class="grid place-items-center border border-slate-300 dark:border-slate-600 text-slate-400 dark:text-slate-500 transition-colors rounded text-sm font-mono w-6 h-6 select-none"
 >
   2
 </div>
 <div
-  class="grid place-items-center border border-slate-300 rounded text-sm font-mono w-6 h-6"
+  class="grid place-items-center border border-slate-300 dark:border-slate-600 text-slate-400 dark:text-slate-500 transition-colors rounded text-sm font-mono w-6 h-6 select-none"
 >
   3
 </div>
 <div
-  class="grid place-items-center border border-slate-300 rounded text-sm font-mono w-6 h-6"
+  class="grid place-items-center border border-slate-300 dark:border-slate-600 text-slate-400 dark:text-slate-500 transition-colors rounded text-sm font-mono w-6 h-6 select-none"
 >
   4
 </div>
 <div
-  class="grid place-items-center border border-slate-300 rounded text-sm font-mono w-6 h-6"
+  class="grid place-items-center border border-slate-300 dark:border-slate-600 text-slate-400 dark:text-slate-500 transition-colors rounded text-sm font-mono w-6 h-6 select-none"
 >
   ⮐
 </div>
