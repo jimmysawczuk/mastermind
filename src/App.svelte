@@ -42,9 +42,9 @@
   }
 </script>
 
-<div class="pt-4">
+<div class="pt-12">
   <div
-    class="fixed w-full px-6 h-16 left-0 top-0 right-0 grid grid-cols-[2fr,1fr] sm:grid-cols-[1fr,2fr,1fr] items-center bg-slate-100/80 dark:bg-slate-700/80 backdrop-blur-md"
+    class="fixed w-full px-6 h-16 left-0 top-0 right-0 grid grid-cols-[2fr,1fr] sm:grid-cols-[1fr,2fr,1fr] items-center bg-slate-100/60 dark:bg-slate-700/60 backdrop-blur-md"
   >
     <div class="hidden sm:block" />
     <h1
