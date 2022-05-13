@@ -1,10 +1,13 @@
 <script>
+  import { Modals, closeModal, openModal } from "svelte-modals"
+
   import GuessPicker from "./GuessPicker.svelte"
   import Guess from "./Guess.svelte"
   import EmptyRow from "./EmptyRow.svelte"
 
   import { getClue, getNewAnswer, isWin } from "./utils"
   import { onMount } from "svelte"
+  import YouWon from "./YouWon.svelte"
 
   let history = []
   let answer
@@ -15,6 +18,7 @@
 
   function handleNewGame() {
     answer = getNewAnswer(false)
+    answer = ["red", "orange", "yellow", "green"]
     history = []
   }
 
@@ -31,8 +35,13 @@
     ]
 
     if (isWin(clue)) {
-      alert("You won!")
-      handleNewGame()
+      openModal(YouWon, {
+        guesses: history.length,
+        answer: answer,
+        onConfirm: () => {
+          handleNewGame()
+        },
+      })
     }
 
     if (history.length >= 10) {
@@ -41,6 +50,14 @@
     }
   }
 </script>
+
+<Modals>
+  <div
+    slot="backdrop"
+    class="fixed inset-0 bg-black/50 backdrop-blur-lg"
+    on:click={closeModal}
+  />
+</Modals>
 
 <div
   class="fixed w-full px-6 h-16 left-0 top-0 right-0 grid grid-cols-[2fr,1fr] sm:grid-cols-[1fr,2fr,1fr] items-center bg-slate-100/60 dark:bg-slate-700/60 transition-colors backdrop-blur-md"

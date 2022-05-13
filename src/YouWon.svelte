@@ -1,0 +1,48 @@
+<script>
+  import { closeModal } from "svelte-modals"
+  import Peg from "./Peg.svelte"
+
+  export let isOpen
+
+  export let answer
+  export let guesses
+  export let onConfirm
+
+  function handleConfirm() {
+    console.log("got here")
+    onConfirm()
+    closeModal()
+  }
+</script>
+
+{#if isOpen}
+  <div
+    role="dialog"
+    class="fixed inset-0 flex justify-center items-center pointer-events-none z-10"
+  >
+    <div
+      class="min-w-[20rem] max-w-[40ch] rounded-md bg-slate-100 dark:bg-slate-600 p-6 z-20 pointer-events-auto"
+    >
+      <h2 class="text-xl font-bold mb-2">You won!</h2>
+      <p class="my-4">The answer was:</p>
+
+      <div class="flex flex-row gap-4 my-4">
+        {#each answer as color}
+          <Peg readonly value={color} />
+        {/each}
+      </div>
+
+      <p>
+        It took you {guesses}
+        {guesses > 1 ? "guesses" : "guess"}. Nice job!
+      </p>
+      <div class="mt-6 text-center">
+        <button
+          type="button"
+          on:click={handleConfirm}
+          class="bg-blue-500 text-white rounded py-2 px-4 pointer">OK</button
+        >
+      </div>
+    </div>
+  </div>
+{/if}

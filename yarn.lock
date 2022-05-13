@@ -2760,6 +2760,11 @@ svelte-loader@^3.1.2:
     svelte-dev-helper "^1.1.9"
     svelte-hmr "^0.14.2"
 
+svelte-modals@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/svelte-modals/-/svelte-modals-1.1.0.tgz#ed6a0926aa9ff5b637f73585f9192d8599dfd8a2"
+  integrity sha512-AB2BIy13dQExj7l6h6Rrwqx36HgX5ffh3n+rhGy5+xRpgsHHcGZKH0JkjZdKxuAqNeN1bawupQ8Y8IYr/rCVXg==
+
 svelte-preprocess@^4.10.6:
   version "4.10.6"
   resolved "https://registry.yarnpkg.com/svelte-preprocess/-/svelte-preprocess-4.10.6.tgz#5f9a53e7ed3b85fc7e0841120c725b76ac5a1ba8"
