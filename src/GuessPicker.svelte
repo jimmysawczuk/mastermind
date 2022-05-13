@@ -57,17 +57,19 @@
   $: submittable = guess.filter((s) => s == "").length == 0
 </script>
 
+<div />
+
 {#each guess as peg}
   <div>
     <Peg bind:value={peg} lg />
   </div>
 {/each}
 
-<div class="pt-2">
+<div>
   <button
     on:click={handleSubmit}
     disabled={!submittable}
-    class="block w-8 h-8 p-2 bg-blue-500 text-white rounded-md disabled:bg-slate-400 shadow-lg disabled:shadow transition-all"
+    class="block w-10 h-10 p-2 bg-blue-500 text-white rounded-md disabled:bg-slate-400 shadow-lg disabled:shadow transition-all"
   >
     <svg
       aria-hidden="true"
@@ -90,6 +92,8 @@
     </svg>
   </button>
 </div>
+
+<div />
 
 <div
   class="grid place-items-center border border-slate-300 dark:border-slate-600 text-slate-400 dark:text-slate-500 transition-colors rounded text-sm font-mono w-6 h-6 select-none"

@@ -16,8 +16,8 @@
 
 <div
   class="block rounded-full p-0 transition-colors shadow-md"
-  class:w-6={!lg}
-  class:h-6={!lg}
+  class:w-8={!lg}
+  class:h-8={!lg}
   class:w-10={lg}
   class:h-10={lg}
   class:cursor-pointer={!readonly}
