@@ -1,25 +1,42 @@
 <script>
+  import { onMount, onDestroy } from "svelte"
+  import { fade } from "svelte/transition"
   import { Modals, closeModal, openModal } from "svelte-modals"
 
   import GuessPicker from "./GuessPicker.svelte"
   import Guess from "./Guess.svelte"
   import EmptyRow from "./EmptyRow.svelte"
+  import YouWon from "./YouWon.svelte"
+  import YouLost from "./YouLost.svelte"
 
   import { getClue, getNewAnswer, isWin } from "./utils"
-  import { onMount } from "svelte"
-  import YouWon from "./YouWon.svelte"
 
   let history = []
   let answer
+  let canGuess = false
 
   onMount(async () => {
+    document.addEventListener("keyup", handleKeyUp)
     handleNewGame()
   })
 
+  onDestroy(() => {
+    document.removeEventListener("keyup", handleKeyUp)
+  })
+
+  function handleKeyUp(evt) {
+    switch (evt.key) {
+      case "n":
+        handleNewGame()
+        break
+    }
+  }
+
   function handleNewGame() {
     answer = getNewAnswer(false)
-    answer = ["red", "orange", "yellow", "green"]
+    // answer = ["red", "red", "red", "red"]
     history = []
+    canGuess = true
   }
 
   function handleGuess(evt) {
@@ -35,6 +52,7 @@
     ]
 
     if (isWin(clue)) {
+      canGuess = false
       openModal(YouWon, {
         guesses: history.length,
         answer: answer,
@@ -42,11 +60,15 @@
           handleNewGame()
         },
       })
-    }
-
-    if (history.length >= 10) {
-      alert("You lose! The answer was: " + answer.join(", "))
-      handleNewGame()
+    } else if (history.length >= 10) {
+      canGuess = false
+      openModal(YouLost, {
+        guesses: history.length,
+        answer,
+        onConfirm: () => {
+          handleNewGame()
+        },
+      })
     }
   }
 </script>
@@ -54,8 +76,9 @@
 <Modals>
   <div
     slot="backdrop"
-    class="fixed inset-0 bg-black/50 backdrop-blur-lg"
+    class="fixed inset-0 bg-slate-900/50 backdrop-blur-md z-10 transition-all"
     on:click={closeModal}
+    transition:fade={{ duration: 150 }}
   />
 </Modals>
 
@@ -76,10 +99,9 @@
   </div>
 </div>
 
-<div class="mt-[-22%] md:mt-0">
+<div class="px-6">
   <div
-    class="grid grid-cols-6 auto-rows-[1fr] gap-1 place-items-center origin-bottom"
-    style="transform: perspective(16rem) rotateX(0.15rad) scale(1.2)"
+    class="grid grid-cols-6 auto-rows-fr gap-1 place-items-center origin-bottom"
   >
     {#each Array(10 - history.length) as name}
       <EmptyRow />
@@ -89,8 +111,6 @@
       <Guess num={history.length - i} guess={row.guess} clue={row.clue} />
     {/each}
 
-    <GuessPicker on:guess={handleGuess} />
+    <GuessPicker on:guess={handleGuess} {canGuess} />
   </div>
-
-  <div class="grid grid-cols-5 auto-rows-[1fr] gap-1 place-items-center mt-4" />
 </div>

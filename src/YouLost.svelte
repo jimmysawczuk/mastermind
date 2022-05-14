@@ -6,7 +6,6 @@
   export let isOpen
 
   export let answer
-  export let guesses
   export let onConfirm
 
   onMount(() => {
@@ -43,7 +42,7 @@
     <div
       class="min-w-[20rem] max-w-[40ch] rounded-md bg-slate-100 dark:bg-slate-700 p-6 z-20 pointer-events-auto"
     >
-      <h2 class="text-xl font-bold mb-2">You won! 🎉</h2>
+      <h2 class="text-xl font-bold mb-2">You lost! 😢</h2>
       <p class="my-4">The answer was:</p>
 
       <div class="flex flex-row gap-4 my-4 place-content-center">
@@ -52,10 +51,6 @@
         {/each}
       </div>
 
-      <p>
-        It took you {guesses}
-        {guesses > 1 ? "guesses" : "guess"}. Nice job!
-      </p>
       <div class="mt-6 text-center">
         <button
           type="button"

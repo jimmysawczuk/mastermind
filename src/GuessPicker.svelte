@@ -3,6 +3,8 @@
   import { createEventDispatcher, onMount } from "svelte"
   import { toggleColor } from "./utils.js"
 
+  export let canGuess
+
   let dispatch = createEventDispatcher()
   let guess = initialGuess()
 
@@ -16,7 +18,6 @@
 
   function handleSubmit() {
     dispatch("guess", { guess: guess })
-    guess = initialGuess()
   }
 
   function handleKeyUp(evt) {
@@ -54,7 +55,7 @@
     }
   }
 
-  $: submittable = guess.filter((s) => s == "").length == 0
+  $: submittable = canGuess && guess.filter((s) => s == "").length == 0
 </script>
 
 <div />
