@@ -18,6 +18,7 @@
 
   function handleSubmit() {
     dispatch("guess", { guess: guess })
+    guess = initialGuess()
   }
 
   function handleKeyUp(evt) {
