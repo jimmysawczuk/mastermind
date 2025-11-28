@@ -39,8 +39,7 @@
   }
 
   function handleNewGame() {
-    // answer = getNewAnswer(false)
-    answer = ["red", "red", "red", "red"]
+    answer = getNewAnswer(false)
     history = []
     canGuess = true
   }
@@ -108,7 +107,7 @@
     {/each}
 
     {#each history as row, i}
-      <Guess num={history.length - i} guess={row.guess} clue={row.clue} />
+      <Guess num={history.length - i} answer={row.guess} clue={row.clue} />
     {/each}
 
     <GuessPicker {submitGuess} {canGuess} />

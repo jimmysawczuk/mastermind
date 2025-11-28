@@ -4,7 +4,7 @@
   import Peg from "./Peg.svelte"
 
   import { toggleColor } from "./utils.js"
-  import { type Answer } from "./types"
+  import { Color, type Answer } from "./types"
 
   let { canGuess = true, submitGuess } = $props<{
     canGuess: boolean
@@ -14,7 +14,7 @@
   let guess = $state<Answer>(initialGuess())
 
   function initialGuess(): Answer {
-    return ["", "", "", ""]
+    return Array(4).fill(Color.Empty) as Answer
   }
 
   onMount(() => {
@@ -27,6 +27,10 @@
   }
 
   function handleKeyUp(evt: KeyboardEvent) {
+    if (!canGuess) {
+      return
+    }
+
     switch (evt.key) {
       case "1":
       case "a":
@@ -66,7 +70,7 @@
   )
 </script>
 
-<div />
+<div></div>
 
 {#each guess as peg, i}
   <div>
@@ -76,9 +80,10 @@
 
 <div>
   <button
-    on:click={handleSubmit}
+    onclick={handleSubmit}
     disabled={!submittable}
     class="block w-10 h-10 p-2 bg-blue-500 text-white rounded-md disabled:bg-slate-400 shadow-lg disabled:shadow transition-all"
+    title="Submit guess"
   >
     <svg
       aria-hidden="true"
@@ -102,7 +107,7 @@
   </button>
 </div>
 
-<div />
+<div></div>
 
 <div
   class="grid place-items-center border border-slate-300 dark:border-slate-600 text-slate-400 dark:text-slate-500 transition-colors rounded text-sm font-mono w-6 h-6 select-none"
