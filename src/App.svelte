@@ -100,7 +100,7 @@
 
 <div class="px-6">
   <div
-    class="grid grid-cols-6 auto-rows-fr gap-1 place-items-center origin-bottom"
+    class="grid grid-cols-6 auto-rows-fr gap-2 place-items-center origin-bottom"
   >
     {#each Array(10 - history.length) as name}
       <EmptyRow />

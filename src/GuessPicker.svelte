@@ -96,27 +96,27 @@
 <div></div>
 
 <div
-  class="grid place-items-center border border-slate-300 dark:border-slate-600 text-slate-400 dark:text-slate-500 transition-colors rounded text-sm font-mono w-6 h-6 select-none"
+  class="grid place-items-center border border-slate-300 dark:border-slate-600 text-slate-400 dark:text-slate-500 transition-colors rounded text-sm font-mono size-8 p-1 select-none"
 >
   1
 </div>
 <div
-  class="grid place-items-center border border-slate-300 dark:border-slate-600 text-slate-400 dark:text-slate-500 transition-colors rounded text-sm font-mono w-6 h-6 select-none"
+  class="grid place-items-center border border-slate-300 dark:border-slate-600 text-slate-400 dark:text-slate-500 transition-colors rounded text-sm font-mono size-8 p-1 select-none"
 >
   2
 </div>
 <div
-  class="grid place-items-center border border-slate-300 dark:border-slate-600 text-slate-400 dark:text-slate-500 transition-colors rounded text-sm font-mono w-6 h-6 select-none"
+  class="grid place-items-center border border-slate-300 dark:border-slate-600 text-slate-400 dark:text-slate-500 transition-colors rounded text-sm font-mono size-8 p-1 select-none"
 >
   3
 </div>
 <div
-  class="grid place-items-center border border-slate-300 dark:border-slate-600 text-slate-400 dark:text-slate-500 transition-colors rounded text-sm font-mono w-6 h-6 select-none"
+  class="grid place-items-center border border-slate-300 dark:border-slate-600 text-slate-400 dark:text-slate-500 transition-colors rounded text-sm font-mono size-8 p-1 select-none"
 >
   4
 </div>
 <div
-  class="grid place-items-center border border-slate-300 dark:border-slate-600 text-slate-400 dark:text-slate-500 transition-colors rounded text-sm font-mono w-6 h-6 select-none"
+  class="grid place-items-center border border-slate-300 dark:border-slate-600 text-slate-400 dark:text-slate-500 transition-colors rounded text-sm font-mono size-8 p-1 select-none"
 >
   ⮐
 </div>
