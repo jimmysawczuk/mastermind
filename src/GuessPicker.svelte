@@ -1,14 +1,19 @@
-<script>
+<script lang="ts">
+  import { onMount } from "svelte"
+
   import Peg from "./Peg.svelte"
-  import { createEventDispatcher, onMount } from "svelte"
+
   import { toggleColor } from "./utils.js"
+  import { type Answer } from "./types"
 
-  export let canGuess
+  let { canGuess = true, submitGuess } = $props<{
+    canGuess: boolean
+    submitGuess: (answer: Answer) => Promise<void>
+  }>()
 
-  let dispatch = createEventDispatcher()
-  let guess = initialGuess()
+  let guess = $state<Answer>(initialGuess())
 
-  function initialGuess() {
+  function initialGuess(): Answer {
     return ["", "", "", ""]
   }
 
@@ -16,12 +21,12 @@
     document.addEventListener("keyup", handleKeyUp)
   })
 
-  function handleSubmit() {
-    dispatch("guess", { guess: guess })
+  async function handleSubmit() {
+    await submitGuess(guess)
     guess = initialGuess()
   }
 
-  function handleKeyUp(evt) {
+  function handleKeyUp(evt: KeyboardEvent) {
     switch (evt.key) {
       case "1":
       case "a":
@@ -56,14 +61,16 @@
     }
   }
 
-  $: submittable = canGuess && guess.filter((s) => s == "").length == 0
+  let submittable = $derived(
+    canGuess && guess.filter((s) => s == "").length == 0,
+  )
 </script>
 
 <div />
 
-{#each guess as peg}
+{#each guess as peg, i}
   <div>
-    <Peg bind:value={peg} lg />
+    <Peg bind:value={guess[i]} lg />
   </div>
 {/each}
 

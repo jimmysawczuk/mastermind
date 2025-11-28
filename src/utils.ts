@@ -1,3 +1,5 @@
+import type { Answer, Clue } from "./types"
+
 export const DEFAULT_COLORS = [
   "red",
   "orange",
@@ -7,7 +9,7 @@ export const DEFAULT_COLORS = [
   "purple",
 ]
 
-export function getClue(guess, answer) {
+export function getClue(guess: Answer, answer: Answer): Clue {
   let white = 0
   let black = 0
 
@@ -50,7 +52,7 @@ export function getClue(guess, answer) {
     ...Array(black).fill("black"),
     ...Array(white).fill("white"),
     ...Array(4 - black - white).fill(""),
-  ]
+  ] as Clue
 }
 
 export function getNewAnswer(repeat = true) {

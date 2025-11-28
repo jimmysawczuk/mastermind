@@ -2,10 +2,12 @@
   "useTabs": false,
   "tabWidth": 2,
   "semi": false,
+  "plugins": ["prettier-plugin-svelte"],
   "overrides": [
     {
       "files": ".prettierrc",
       "options": { "parser": "json" }
-    }
+    },
+    { "files": "*.svelte", "options": { "parser": "svelte" } }
   ]
 }
