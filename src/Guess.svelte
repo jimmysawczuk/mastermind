@@ -1,15 +1,14 @@
-<script>
+<script lang="ts">
   import Peg from "./Peg.svelte"
   import Clue from "./Clue.svelte"
-  export let guess = []
-  export let clue = []
-  export let num = 0
+
+  const { answer, clue, num = 0 } = $props()
 </script>
 
 <div class="font-mono text-center text-slate-500">#{num}</div>
 
-{#each guess as peg}
-  <Peg value={peg} readonly />
+{#each answer as value}
+  <Peg {value} readonly />
 {/each}
 
 <div class="grid grid-cols-2 grid-rows-2 gap-2 place-items-center">

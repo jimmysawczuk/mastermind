@@ -1,13 +1,25 @@
-export const DEFAULT_COLORS = [
-  "red",
-  "orange",
-  "yellow",
-  "green",
-  "blue",
-  "purple",
+import { Color, type Answer, type Clue } from "./types"
+
+export const PEG_COLORS: Color[] = [
+  Color.Red,
+  Color.Orange,
+  Color.Yellow,
+  Color.Green,
+  Color.Blue,
+  Color.Purple,
 ]
 
-export function getClue(guess, answer) {
+export const TOGGLE_COLORS: Color[] = [
+  Color.Empty,
+  Color.Red,
+  Color.Orange,
+  Color.Yellow,
+  Color.Green,
+  Color.Blue,
+  Color.Purple,
+]
+
+export function getClue(guess: Answer, answer: Answer): Clue {
   let white = 0
   let black = 0
 
@@ -50,15 +62,15 @@ export function getClue(guess, answer) {
     ...Array(black).fill("black"),
     ...Array(white).fill("white"),
     ...Array(4 - black - white).fill(""),
-  ]
+  ] as Clue
 }
 
-export function getNewAnswer(repeat = true) {
+export function getNewAnswer(repeat = true): Answer {
   while (true) {
     let resp = []
     for (let i = 0; i < 4; i++) {
-      const r = Math.floor(Math.random() * DEFAULT_COLORS.length)
-      resp[i] = DEFAULT_COLORS[r]
+      const r = Math.floor(Math.random() * PEG_COLORS.length)
+      resp[i] = PEG_COLORS[r]
     }
 
     if (!repeat) {
@@ -70,11 +82,11 @@ export function getNewAnswer(repeat = true) {
     }
 
     // console.log("final", resp)
-    return resp
+    return resp as Answer
   }
 }
 
-export function isWin(clue) {
+export function isWin(clue: Clue): boolean {
   if (clue.length !== 4) {
     return false
   }
@@ -88,9 +100,7 @@ export function isWin(clue) {
   return true
 }
 
-const toggleColors = ["", ...DEFAULT_COLORS]
-
-export function toggleColor(current) {
-  const selected = toggleColors.indexOf(current)
-  return toggleColors[(selected + 1) % toggleColors.length]
+export function toggleColor(current: Color): Color{
+  const selected = TOGGLE_COLORS.indexOf(current)
+  return TOGGLE_COLORS[(selected + 1) % TOGGLE_COLORS.length]
 }
