@@ -82,7 +82,7 @@
 </Modals>
 
 <div
-  class="fixed w-full px-6 h-16 left-0 top-0 right-0 grid grid-cols-[2fr,1fr] sm:grid-cols-[1fr,2fr,1fr] items-center bg-slate-100/60 dark:bg-slate-700/60 transition-colors backdrop-blur-md"
+  class="fixed w-full px-6 h-16 left-0 top-0 right-0 grid grid-cols-[2fr_1fr] sm:grid-cols-[1fr_2fr_1fr] items-center bg-slate-100/60 dark:bg-slate-700/60 transition-colors backdrop-blur-md"
 >
   <div class="hidden sm:block"></div>
   <h1
