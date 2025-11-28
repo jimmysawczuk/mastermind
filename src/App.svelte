@@ -1,7 +1,7 @@
 <script>
   import { onMount, onDestroy } from "svelte"
   import { fade } from "svelte/transition"
-  import { Modals, closeModal, openModal } from "svelte-modals"
+  import { Modals } from "svelte-modals"
 
   import GuessPicker from "./GuessPicker.svelte"
   import Guess from "./Guess.svelte"
@@ -14,6 +14,9 @@
   let history = []
   let answer
   let canGuess = false
+
+  const closeModal = function () {}
+  const openModal = function () {}
 
   onMount(async () => {
     document.addEventListener("keyup", handleKeyUp)

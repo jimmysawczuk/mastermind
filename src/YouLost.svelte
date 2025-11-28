@@ -1,12 +1,12 @@
 <script>
   import { onMount, onDestroy } from "svelte"
-  import { closeModal } from "svelte-modals"
+  // import { closeModal } from "svelte-modals"
   import Peg from "./Peg.svelte"
 
   export let isOpen
 
   export let answer
-  export let onConfirm
+  // export let onConfirm
 
   onMount(() => {
     document.addEventListener("keyup", handleKeyUp)
@@ -15,6 +15,9 @@
   onDestroy(() => {
     document.removeEventListener("keyup", handleKeyUp)
   })
+
+  const closeModal = function () {}
+  const onConfirm = function () {}
 
   function handleConfirm() {
     onConfirm()
