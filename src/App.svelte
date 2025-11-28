@@ -45,7 +45,7 @@
     canGuess = true
   }
 
-  function submitGuess(guess: Answer) {
+  async function submitGuess(guess: Answer) {
     const clue = getClue(guess, answer as Answer)
 
     history = [
